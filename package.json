@@ -1,0 +1,28 @@
+{
+  "name": "castit",
+  "version": "0.1.0",
+  "description": "Opinionated Javascript variable casting with deep structures support",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bermi/castit.git"
+  },
+  "keywords": [
+    "auto",
+    "cast",
+    "typecase",
+    "convert",
+    "casting",
+    "type",
+    "coercion"
+  ],
+  "author": "Bermi Ferrer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bermi/castit/issues"
+  },
+  "homepage": "https://github.com/bermi/castit"
+}
