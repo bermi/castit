@@ -54,6 +54,13 @@ var obj = {"bool": "false"}
 assert.strictEqual(castIt(obj), obj);
 console.log("ok");
 
+console.log("Special Cases 2...");
+assert.strictEqual(castIt(".2"), 0.2);
+assert.strictEqual(castIt("0.2"), 0.2);
+assert.strictEqual(castIt("0.02"), 0.02);
+assert.strictEqual(castIt("0text"), "0text");
+assert.strictEqual(castIt("0.text"), "0.text");
+console.log("ok");
 
 console.log("Deep casting...");
 assert.deepEqual(castIt(["true", ["false"]], true), [true, [false]]);
