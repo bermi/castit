@@ -51,6 +51,10 @@ castIt = module.exports = function castIt(s, deep) {
 
   // Try to cast it to a number
   if ((key = +s) === key) {
+    // This is a string that starts with 0. followed by more numbers
+    if ((s + "").match(/^0\.+/)) {
+      return key;
+    }
     // This is a string that starts with 0 or contains letters
     if ((s + "").match(/^0+/)) {
       return s;
