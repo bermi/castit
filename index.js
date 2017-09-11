@@ -49,8 +49,16 @@ castIt = module.exports = function castIt(s, deep) {
     }
   }
 
+  // When the key has only one character it should be greater than 0
+  // this allows using empty spaces and control characters that are casted
+  // by JavaScript as 0
+  if (s.length === 1 && (+s === 0) && s !== "0") {
+    return s;
+  }
+
   // Try to cast it to a number
   if ((key = +s) === key) {
+
     // This is a string that starts with 0. followed by more numbers
     if ((s + "").match(/^0\.+/)) {
       return key;

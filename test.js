@@ -26,12 +26,23 @@ assert.strictEqual(castIt(false), false);
 assert.strictEqual(castIt(true), true);
 assert.strictEqual(castIt(null), null);
 assert.strictEqual(castIt(undefined), undefined);
+
 console.log("ok");
 
 console.log("Testing strings...");
 assert.strictEqual(castIt("some string"), "some string");
 assert.strictEqual(castIt("!"), "!");
+
 console.log("ok");
+
+
+console.log("Testing spaces and punctuation...");
+
+assert.strictEqual(castIt("."), ".");
+assert.strictEqual(castIt(" "), " ");
+assert.strictEqual(castIt("\t"), "\t");
+assert.strictEqual(castIt("\uD83D\uDE00"), "😀");
+
 
 console.log("Testing dates...");
 var tmp = new Date();
@@ -44,6 +55,8 @@ assert.strictEqual(castIt("-"), "");
 assert.strictEqual(castIt(""), "");
 assert.strictEqual(castIt("0001"), "0001");
 assert.strictEqual(castIt("0005400"), "0005400");
+assert.strictEqual(castIt("9/19/99"), "9/19/99");
+assert.strictEqual(castIt("1.2345"), 1.2345);
 assert.deepEqual(castIt([]), []);
 assert.deepEqual(castIt({}), {});
 var fn = function () {};
