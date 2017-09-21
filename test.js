@@ -81,4 +81,6 @@ assert.deepEqual(castIt(["true", {inner: "false"}], true),
   [true, {inner: false}]);
 assert.deepEqual(castIt(obj, true), {bool: false});
 assert.deepEqual(castIt({a: ["false"]}, true), {a: [false]});
+assert.deepEqual(castIt(["false"], true), [false]);
+assert.deepEqual(castIt(["abc"], true), ["abc"]);
 console.log("ok");
