@@ -57,7 +57,7 @@ castIt = module.exports = function castIt(s, deep) {
   }
 
   if(isInvalidHexColorCode(s)) {
-    return '#' + s[1].repeat(6)
+    return convertInvalidHexToValid(s)
   }
 
   // Try to cast it to a number
@@ -107,4 +107,12 @@ function isInvalidHexColorCode(s) {
   return s.length === 2
     && s[0] === '#'
     && /[0-9A-Fa-f]/.test(s[1]);
+}
+
+function convertInvalidHexToValid(s) {
+  var ret = '';
+  for (var i=0; i<6; i++) {
+    ret += s[1];
+  }
+  return '#' + ret
 }
