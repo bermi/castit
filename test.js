@@ -65,8 +65,6 @@ var fnInstance = new fn();
 assert.strictEqual(castIt(fnInstance), fnInstance);
 var obj = {"bool": "false"}
 assert.strictEqual(castIt(obj), obj);
-assert.strictEqual(castIt("#0"), "#000000");
-
 console.log("ok");
 
 console.log("Special Cases 2...");
@@ -75,6 +73,15 @@ assert.strictEqual(castIt("0.2"), 0.2);
 assert.strictEqual(castIt("0.02"), 0.02);
 assert.strictEqual(castIt("0text"), "0text");
 assert.strictEqual(castIt("0.text"), "0.text");
+console.log("ok");
+
+
+console.log('Should cast invalid color hex code to valid');
+assert.strictEqual(castIt("#0"), "#000000");
+assert.strictEqual(castIt("#f"), "#ffffff");
+assert.strictEqual(castIt("#c"), "#cccccc");
+assert.strictEqual(castIt("#e"), "#eeeeee");
+assert.strictEqual(castIt("#9"), "#999999");
 console.log("ok");
 
 console.log("Deep casting...");

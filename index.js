@@ -12,7 +12,6 @@ var common_strings = {
   "0.0": 0,
   "0.00": 0,
   "0": 0,
-  "#0": "#000000"
 }, castIt;
 
 /**
@@ -57,6 +56,10 @@ castIt = module.exports = function castIt(s, deep) {
     return s;
   }
 
+  if(isInvalidHexColorCode(s)) {
+    return '#' + s[1].repeat(6)
+  }
+
   // Try to cast it to a number
   if ((key = +s) === key) {
 
@@ -97,4 +100,11 @@ function deepCast(s) {
     return s;
   }
   return castIt(s);
+}
+
+function isInvalidHexColorCode(s) {
+  s = '' + s;
+  return s.length === 2
+    && s[0] === '#'
+    && /[0-9A-Fa-f]/.test(s[1]);
 }
