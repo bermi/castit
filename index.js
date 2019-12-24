@@ -11,7 +11,8 @@ var common_strings = {
   "NaN": NaN,
   "0.0": 0,
   "0.00": 0,
-  "0": 0
+  "0": 0,
+  "#0": "#000000"
 }, castIt;
 
 /**
@@ -69,6 +70,8 @@ castIt = module.exports = function castIt(s, deep) {
     }
     return key;
   }
+
+  // try to fix hex color code
 
   // Give up
   return s;

@@ -65,6 +65,8 @@ var fnInstance = new fn();
 assert.strictEqual(castIt(fnInstance), fnInstance);
 var obj = {"bool": "false"}
 assert.strictEqual(castIt(obj), obj);
+assert.strictEqual(castIt("#0"), "#000000");
+
 console.log("ok");
 
 console.log("Special Cases 2...");
@@ -84,3 +86,4 @@ assert.deepEqual(castIt({a: ["false"]}, true), {a: [false]});
 assert.deepEqual(castIt(["false"], true), [false]);
 assert.deepEqual(castIt(["abc"], true), ["abc"]);
 console.log("ok");
+
