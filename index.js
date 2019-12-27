@@ -11,7 +11,7 @@ var common_strings = {
   "NaN": NaN,
   "0.0": 0,
   "0.00": 0,
-  "0": 0
+  "0": 0,
 }, castIt;
 
 /**
@@ -56,6 +56,10 @@ castIt = module.exports = function castIt(s, deep) {
     return s;
   }
 
+  if(isInvalidHexColorCode(s)) {
+    return convertInvalidHexToValid(s)
+  }
+
   // Try to cast it to a number
   if ((key = +s) === key) {
 
@@ -69,6 +73,8 @@ castIt = module.exports = function castIt(s, deep) {
     }
     return key;
   }
+
+  // try to fix hex color code
 
   // Give up
   return s;
@@ -94,4 +100,19 @@ function deepCast(s) {
     return s;
   }
   return castIt(s);
+}
+
+function isInvalidHexColorCode(s) {
+  s = '' + s;
+  return s.length === 2
+    && s[0] === '#'
+    && /[0-9A-Fa-f]/.test(s[1]);
+}
+
+function convertInvalidHexToValid(s) {
+  var ret = '';
+  for (var i=0; i<6; i++) {
+    ret += s[1];
+  }
+  return '#' + ret
 }

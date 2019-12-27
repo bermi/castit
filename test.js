@@ -75,6 +75,15 @@ assert.strictEqual(castIt("0text"), "0text");
 assert.strictEqual(castIt("0.text"), "0.text");
 console.log("ok");
 
+
+console.log('Should cast invalid color hex code to valid');
+assert.strictEqual(castIt("#0"), "#000000");
+assert.strictEqual(castIt("#f"), "#ffffff");
+assert.strictEqual(castIt("#c"), "#cccccc");
+assert.strictEqual(castIt("#e"), "#eeeeee");
+assert.strictEqual(castIt("#9"), "#999999");
+console.log("ok");
+
 console.log("Deep casting...");
 assert.deepEqual(castIt(["true", ["false"]], true), [true, [false]]);
 assert.deepEqual(castIt(["true", {inner: "false"}], true),
@@ -84,3 +93,4 @@ assert.deepEqual(castIt({a: ["false"]}, true), {a: [false]});
 assert.deepEqual(castIt(["false"], true), [false]);
 assert.deepEqual(castIt(["abc"], true), ["abc"]);
 console.log("ok");
+
