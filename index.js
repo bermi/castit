@@ -71,6 +71,9 @@ castIt = module.exports = function castIt(s, deep) {
     if ((s + "").match(/^0+/)) {
       return s;
     }
+    if (key > Number.MAX_SAFE_INTEGER || key < Number.MIN_SAFE_INTEGER) {
+      return s;
+    }
     return key;
   }
 
