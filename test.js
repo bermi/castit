@@ -17,6 +17,16 @@ assert.ok(isNaN(castIt("NaN")));
 // assert.strictEqual(castIt("1e3"), 1000);
 console.log("ok");
 
+console.log("Testing large numbers...");
+assert.strictEqual(castIt(BigInt(Number.MAX_SAFE_INTEGER).toString()), 9007199254740991);
+assert.strictEqual(castIt((BigInt(Number.MAX_SAFE_INTEGER) + BigInt(1)).toString()), "9007199254740992");
+assert.strictEqual(castIt(BigInt(Number.MIN_SAFE_INTEGER).toString()), -9007199254740991);
+assert.strictEqual(castIt((BigInt(Number.MIN_SAFE_INTEGER) - BigInt(1)).toString()), "-9007199254740992");
+assert.strictEqual(castIt("45144854711432876"), "45144854711432876");
+assert.strictEqual(castIt("1045144854711432876"), "1045144854711432876");
+assert.strictEqual(castIt("9999999999999999999"), "9999999999999999999");
+console.log("ok");
+
 console.log("Testing common data types...");
 assert.strictEqual(castIt("false"), false);
 assert.strictEqual(castIt("true"), true);
