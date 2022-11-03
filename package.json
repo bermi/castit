@@ -1,6 +1,6 @@
 {
   "name": "castit",
-  "version": "0.2.0",
+  "version": "1.2.0",
   "description": "Opinionated Javascript variable casting with deep structures support",
   "main": "index.js",
   "scripts": {
